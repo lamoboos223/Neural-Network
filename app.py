@@ -1,5 +1,4 @@
 import numpy as np
-from IPython.display import Markdown, display
 
 
 class NeuralNetwork():
@@ -55,8 +54,18 @@ class NeuralNetwork():
         output = self.sigmoid(np.dot(inputs, self.synaptic_weights))
         return output
 
-    def printmd(self, msg):
-        display(Markdown(msg))
+
+class color:
+    PURPLE = '\033[95m'
+    CYAN = '\033[96m'
+    DARKCYAN = '\033[36m'
+    BLUE = '\033[94m'
+    GREEN = '\033[92m'
+    YELLOW = '\033[93m'
+    RED = '\033[91m'
+    BOLD = '\033[1m'
+    UNDERLINE = '\033[4m'
+    END = '\033[0m'
 
 
 if __name__ == "__main__":
@@ -87,7 +96,8 @@ if __name__ == "__main__":
     print("Ending Weights After Training: ")
     print(neural_network.synaptic_weights)
 
-    neural_network.printmd("**0 --> No\n 1 --> yes**")
+    print(color.BOLD + '\n\nEnter 0 if it is No\nEnter 1 if it is yes\n' + color.END)
+
     user_input_one = str(input("Is it big? "))
     user_input_two = str(input("Is it sensetive?  "))
     user_input_three = str(input("Does it like weird places? "))
