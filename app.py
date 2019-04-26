@@ -25,14 +25,18 @@ class NeuralNetwork():
             # siphon the training data via  the neuron
             output = self.predict(training_inputs)
 
-            # computing error rate for back-propagation
-            error = training_outputs - output
+            self.BackPropagation(output, training_inputs, training_outputs)
 
-            # performing weight adjustments
-            adjustments = np.dot(training_inputs.T, error *
-                                 self.sigmoid_derivative(output))
+    def BackPropagation(self, output, training_inputs, training_outputs):
 
-            self.synaptic_weights += adjustments
+        # computing error rate for back-propagation
+        error = training_outputs - output
+
+        # performing weight adjustments
+        adjustments = np.dot(training_inputs.T, error *
+                             self.sigmoid_derivative(output))
+
+        self.synaptic_weights += adjustments
 
     def predict(self, inputs):
         # passing the inputs via the neuron to get output
